@@ -51,30 +51,11 @@ namespace WindowsFormsApplication1
                     if (nIndex > 0)
                     {
                         string sTime = sText.Substring(nIndex + 1, sText.Length - nIndex - 1);
-                        //Console.WriteLine(sTime);
                         textBox2.Text = "";
                         textBox2.Text = sTime;
                     }
                 }
             }
-                                   
-            /*
-            WebBrowser wbbrowser = sender as WebBrowser;
-
-            System.IO.StreamReader Reader = new System.IO.StreamReader(wbbrowser.DocumentStream, System.Text.Encoding.GetEncoding(wbbrowser.Document.Encoding));
-            string shtml = Reader.ReadToEnd();
-            Console.WriteLine(shtml);
-
-            //if (wbbrowser.ReadyState == WebBrowserReadyState.Complete)
-            //{
-            //}
-
-            //string sData1 = wbbrowser.Document.Body.InnerText;
-            //string sData2 = wbbrowser.Document.Body.InnerHtml;
-            //Console.WriteLine(sData1);
-            //Console.WriteLine(sData2);
-            return;
-            */
         }
 
         private void timer1_Tick(object sender, EventArgs e)
