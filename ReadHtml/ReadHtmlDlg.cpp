@@ -35,6 +35,8 @@ BOOL CReadHtmlDlg::OnInitDialog()
 
 	SetDlgItemText(IDC_EDIT1, "naver.com");
 
+	SetDlgItemText(IDC_EDIT3, "201706080850");
+
 	return TRUE;  
 }
 
@@ -156,8 +158,28 @@ void CReadHtmlDlg::DocumentCompleteExplorerSub(LPDISPATCH pDisp, VARIANT* URL)
 			if(sHtml != "")
 			{
 				m_bCompleted = TRUE;
+
+				
+				sHtml.Replace("년", "");
+                sHtml.Replace("월", "");
+				sHtml.Replace("일", "");
+				sHtml.Replace("시", "");
+				sHtml.Replace("분", "");
+				sHtml.Replace("초", "");
+				sHtml.Replace(" ", "");
+				sHtml = sHtml.Left(sHtml.GetLength() - 2);
+
 				SetDlgItemText(IDC_EDIT2, sHtml);
 				//OutputDebugString(sHtml);
+
+				CString sTime = "";
+	            GetDlgItemText(IDC_EDIT3, sTime);
+
+				if(sTime == sHtml)
+				{
+					KillTimer(1);
+					AfxMessageBox("complete");
+				}
 			}
 		}
 		SysFreeString(bstr);

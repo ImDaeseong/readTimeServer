@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             textBox1.Text = "naver.com";
+            textBox3.Text = "201706080850";
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -51,8 +52,25 @@ namespace WindowsFormsApplication1
                     if (nIndex > 0)
                     {
                         string sTime = sText.Substring(nIndex + 1, sText.Length - nIndex - 1);
+
+                        sTime = sTime.Replace("년", "");
+                        sTime = sTime.Replace("월", "");
+                        sTime = sTime.Replace("일", "");
+                        sTime = sTime.Replace("시", "");
+                        sTime = sTime.Replace("분", "");
+                        sTime = sTime.Replace("초", "");
+                        sTime = sTime.Replace(" ", "");
+                        sTime = sTime.Substring(0, sTime.Length - 2);
+
                         textBox2.Text = "";
                         textBox2.Text = sTime;
+
+                        if (textBox3.Text == sTime)
+                        {
+                            timer1.Stop();
+                            MessageBox.Show("complete");
+                        }                        
+                                          
                     }
                 }
             }
